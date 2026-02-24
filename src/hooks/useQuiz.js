@@ -15,6 +15,8 @@ export const useQuiz = () => {
   const [answers, setAnswers] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [userName, setUserName] = useState('');
+  const [userPhone, setUserPhone] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [quizStarted, setQuizStarted] = useState(false);
   const [error, setError] = useState(null);
 
@@ -73,14 +75,25 @@ export const useQuiz = () => {
     e.preventDefault();
     const validation = validateUserName(userName);
     
-    if (validation.isValid) {
-      setUserName(validation.value);
-      setQuizStarted(true);
-      setError(null);
-    } else {
+    if (!validation.isValid) {
       setError(MESSAGES.welcome.emptyNameError);
+      return;
     }
-  }, [userName]);
+    
+    if (!userPhone.trim()) {
+      setError('Por favor, insira seu telefone');
+      return;
+    }
+    
+    if (!userEmail.trim()) {
+      setError('Por favor, insira seu email');
+      return;
+    }
+    
+    setUserName(validation.value);
+    setQuizStarted(true);
+    setError(null);
+  }, [userName, userPhone, userEmail]);
 
   // Handle quiz restart
   const handleRestart = useCallback(() => {
@@ -90,6 +103,8 @@ export const useQuiz = () => {
     setShowResults(false);
     setQuizStarted(false);
     setUserName('');
+    setUserPhone('');
+    setUserEmail('');
     setError(null);
   }, []);
 
@@ -132,6 +147,8 @@ export const useQuiz = () => {
     answers,
     showResults,
     userName,
+    userPhone,
+    userEmail,
     quizStarted,
     totalQuestions,
     error,
@@ -143,6 +160,8 @@ export const useQuiz = () => {
     handleStartQuiz,
     handleRestart,
     setUserName,
+    setUserPhone,
+    setUserEmail,
     setError
   };
 };

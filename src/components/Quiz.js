@@ -21,6 +21,8 @@ function Quiz() {
     selectedAnswer,
     showResults,
     userName,
+    userPhone,
+    userEmail,
     quizStarted,
     totalQuestions,
     error,
@@ -30,17 +32,32 @@ function Quiz() {
     handleStartQuiz,
     handleRestart,
     setUserName,
+    setUserPhone,
+    setUserEmail,
   } = useQuiz();
 
   // Render welcome screen
   if (!quizStarted) {
-    return (
-      <WelcomeScreen
-        userName={userName}
-        setUserName={setUserName}
+    retuuserPhone={userPhone}
+        setUserPhone={setUserPhone}
+        userEmail={userEmail}
+        setUserEmail={setUserEmail}
         onStart={handleStartQuiz}
         error={error}
         totalQuestions={totalQuestions}
+      />
+    );
+  }
+
+  // Render results screen
+  if (showResults && results) {
+    return (
+      <ResultsScreen 
+        userName={userName} 
+        userPhone={userPhone}
+        userEmail={userEmail}
+        results={results} 
+        onRestart={handleRestart} 
       />
     );
   }

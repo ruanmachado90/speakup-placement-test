@@ -4,7 +4,7 @@ import { MESSAGES } from '../constants/messages';
 import { sortedLevelKeys } from '../utils/quizHelpers';
 import { sendToGoogleSheets } from '../utils/sheetsService';
 
-const ResultsScreen = ({ userName, results, onRestart }) => {
+const ResultsScreen = ({ userName, userPhone, userEmail, results, onRestart }) => {
   const { correctAnswers, totalQuestions, level, breakdown, sectionBreakdown, percentage } = results;
   const [dataSent, setDataSent] = useState(false);
   const [dataError, setDataError] = useState(false);
@@ -14,6 +14,8 @@ const ResultsScreen = ({ userName, results, onRestart }) => {
     const sendData = async () => {
       const resultData = {
         userName,
+        userPhone,
+        userEmail,
         correctAnswers,
         totalQuestions,
         percentage,
@@ -30,7 +32,7 @@ const ResultsScreen = ({ userName, results, onRestart }) => {
     };
 
     sendData();
-  }, [userName, correctAnswers, totalQuestions, percentage, level, sectionBreakdown]);
+  }, [userName, userPhone, userEmail, correctAnswers, totalQuestions, percentage, level, sectionBreakdown]);
 
   // Section names
   const sectionNames = {

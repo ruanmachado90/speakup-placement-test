@@ -2,7 +2,7 @@ import React from 'react';
 import { QUIZ_CONFIG } from '../constants/config';
 import { MESSAGES } from '../constants/messages';
 
-const WelcomeScreen = ({ userName, setUserName, onStart, error, totalQuestions }) => {
+const WelcomeScreen = ({ userName, setUserName, userPhone, setUserPhone, userEmail, setUserEmail, onStart, error, totalQuestions }) => {
   return (
     <div className="quiz-container">
       <div className="welcome-screen">
@@ -33,6 +33,31 @@ const WelcomeScreen = ({ userName, setUserName, onStart, error, totalQuestions }
             aria-invalid={error ? 'true' : 'false'}
             aria-describedby={error ? 'name-error' : undefined}
           />
+          
+          <label htmlFor="userPhone">Telefone</label>
+          <input
+            type="tel"
+            id="userPhone"
+            value={userPhone}
+            onChange={(e) => setUserPhone(e.target.value)}
+            placeholder="(11) 99999-9999"
+            className="name-input"
+            autoComplete="tel"
+            aria-required="true"
+          />
+          
+          <label htmlFor="userEmail">Email</label>
+          <input
+            type="email"
+            id="userEmail"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
+            placeholder="seuemail@exemplo.com"
+            className="name-input"
+            autoComplete="email"
+            aria-required="true"
+          />
+          
           {error && (
             <div id="name-error" className="error-message" role="alert">
               {error}

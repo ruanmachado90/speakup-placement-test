@@ -29,6 +29,8 @@ export const sendToGoogleSheets = async (resultData) => {
     const dataToSend = {
       timestamp: new Date().toISOString(),
       studentName: resultData.userName,
+      studentPhone: resultData.userPhone,
+      studentEmail: resultData.userEmail,
       totalScore: `${resultData.correctAnswers}/${resultData.totalQuestions}`,
       percentage: `${resultData.percentage}%`,
       level: resultData.level,
