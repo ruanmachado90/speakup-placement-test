@@ -38,7 +38,11 @@ function Quiz() {
 
   // Render welcome screen
   if (!quizStarted) {
-    retuuserPhone={userPhone}
+    return (
+      <WelcomeScreen 
+        userName={userName}
+        setUserName={setUserName}
+        userPhone={userPhone}
         setUserPhone={setUserPhone}
         userEmail={userEmail}
         setUserEmail={setUserEmail}
