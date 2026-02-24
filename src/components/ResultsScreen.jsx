@@ -219,29 +219,6 @@ const ResultsScreen = ({ userName, userPhone, userEmail, results, onRestart }) =
               })}
             </div>
 
-            {/* Score Comparison Table */}
-            <div className="score-comparison">
-              <h4 className="comparison-title">Score comparison table</h4>
-              <table className="comparison-table">
-                <thead>
-                  <tr>
-                    <th>Level</th>
-                    <th>Beginner</th>
-                    <th>Intermediate</th>
-                    <th>Advanced</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="table-label">EF SET</td>
-                    <td className={percentage <= 43 ? 'active' : ''}>0-43%</td>
-                    <td className={percentage > 43 && percentage <= 85 ? 'active' : ''}>44-85%</td>
-                    <td className={percentage > 85 ? 'active' : ''}>86-100%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
             {/* CEFR Level Breakdown */}
             <div className="cefr-breakdown">
               <h4 className="breakdown-subtitle">Performance by CEFR Level</h4>
