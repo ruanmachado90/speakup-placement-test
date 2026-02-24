@@ -11,12 +11,14 @@
 ```
 A1: Data/Hora
 B1: Nome do Aluno
-C1: Score Total
-D1: Percentual
-D1: Nível CEFR
-F1: Grammar Score
-G1: Vocabulary Score
-H1: Reading Score
+C1: Telefone
+D1: Email
+E1: Score Total
+F1: Percentual
+G1: Nível CEFR
+H1: Grammar Score
+I1: Vocabulary Score
+J1: Reading Score
 ```
 
 ---
@@ -91,6 +93,8 @@ function doPost(e) {
     const rowData = [
       formattedDate,                    // Data/Hora
       data.studentName,                 // Nome do Aluno
+      data.studentPhone,                // Telefone
+      data.studentEmail,                // Email
       data.totalScore,                  // Score Total (ex: 45/60)
       data.percentage,                  // Percentual (ex: 75%)
       data.level,                       // Nível CEFR (ex: B1)
@@ -106,10 +110,10 @@ function doPost(e) {
     const lastRow = sheet.getLastRow();
     
     // Center align all cells in the new row
-    sheet.getRange(lastRow, 1, 1, 8).setHorizontalAlignment('center');
+    sheet.getRange(lastRow, 1, 1, 10).setHorizontalAlignment('center');
     
-    // Bold the level column (column E)
-    sheet.getRange(lastRow, 5).setFontWeight('bold');
+    // Bold the level column (column G)
+    sheet.getRange(lastRow, 7).setFontWeight('bold');
     
     // Color code based on level
     const levelColors = {
@@ -122,7 +126,7 @@ function doPost(e) {
     };
     
     const levelColor = levelColors[data.level] || '#ffffff';
-    sheet.getRange(lastRow, 5).setBackground(levelColor);
+    sheet.getRange(lastRow, 7).setBackground(levelColor);
     
     // Log success
     Logger.log('Data saved successfully for: ' + data.studentName);
@@ -153,6 +157,8 @@ function testScript() {
   const testData = {
     timestamp: new Date().toISOString(),
     studentName: 'Test Student',
+    studentPhone: '(11) 99999-9999',
+    studentEmail: 'test@example.com',
     totalScore: '45/60',
     percentage: '75%',
     level: 'B1',
@@ -190,6 +196,8 @@ function addTestDataDirectly() {
   const testRow = [
     Utilities.formatDate(new Date(), TIMEZONE, 'dd/MM/yyyy HH:mm:ss'),
     'Test Student',
+    '(11) 99999-9999',
+    'test@example.com',
     '45/60',
     '75%',
     'B1',
