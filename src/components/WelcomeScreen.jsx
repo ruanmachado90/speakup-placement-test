@@ -34,7 +34,7 @@ const WelcomeScreen = ({ userName, setUserName, userPhone, setUserPhone, userEma
             aria-describedby={error ? 'name-error' : undefined}
           />
           
-          <label htmlFor="userPhone">Telefone</label>
+          <label htmlFor="userPhone">Telephone</label>
           <input
             type="tel"
             id="userPhone"
