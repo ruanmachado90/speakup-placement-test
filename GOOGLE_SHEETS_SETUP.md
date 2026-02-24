@@ -11,7 +11,7 @@
 ```
 A1: Data/Hora
 B1: Nome do Aluno
-C1: Telefone
+C1: Telephone
 D1: Email
 E1: Score Total
 F1: Percentual
@@ -93,7 +93,7 @@ function doPost(e) {
     const rowData = [
       formattedDate,                    // Data/Hora
       data.studentName,                 // Nome do Aluno
-      data.studentPhone,                // Telefone
+      data.studentPhone,                // Telephone
       data.studentEmail,                // Email
       data.totalScore,                  // Score Total (ex: 45/60)
       data.percentage,                  // Percentual (ex: 75%)
