@@ -38,7 +38,7 @@ export const sendToGoogleSheets = async (resultData) => {
     };
 
     // Send to Google Sheets
-    const response = await fetch(SHEETS_CONFIG.scriptUrl, {
+    await fetch(SHEETS_CONFIG.scriptUrl, {
       method: 'POST',
       mode: 'no-cors', // Required for Apps Script
       headers: {
